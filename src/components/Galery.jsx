@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react"
 import { X } from "lucide-react"
 
+const img = (path) => import.meta.env.BASE_URL + path.replace(/^\//, "")
+
 const photos = Array.from({ length: 10 }, (_, i) => ({
-  src: `/photo_${i + 1}.jpg`,
+  src: img(`img/menu/photo_${i + 1}.jpg`),
   alt: `Foto ${i + 1}`,
 }))
 
 const photos_instalacion = Array.from({ length: 4 }, (_, i) => ({
-  src: `/photo_local_${i + 1}.jpg`,
+  src: img(`img/local/photo_local_${i + 1}.jpg`),
   alt: `Instalación ${i + 1}`,
 }))
 
@@ -21,7 +23,7 @@ export default function Galery() {
   }, [selected])
 
   return (
-    <section id="galery" className="container py-16 sm:py-20">
+    <section id="galery" className="container py-16 sm:py-20 scroll-mt-16">
       <div className="text-center mb-10">
         <h2 className="text-lg text-primary mb-2 tracking-wider">Galería</h2>
         <h2 className="text-3xl md:text-4xl font-bold">Nuestra instalación</h2>

@@ -4,13 +4,15 @@ Sitio web de **Cafebzito** — café artesanal y platillos mexicanos en Campeche
 
 ## Secciones
 
-- **Navbar** — Navegación con menú responsive (mobile sheet + desktop)
-- **Hero** — Presentación con eslogan "Aquí todo sabe mejor" e imagen de promociones
-- **Testimonials** — Testimonios de clientes
+- **Navbar** — Navegación responsive (mobile sheet + desktop) con logo condicional según tema
+- **Hero** — Carrusel de portadas con fade transition, auto-avance cada 5s, swipe táctil, flechas y puntos de navegación
+- **History** — Historia del negocio con imagen decorada y layout condicional por tema (dark/light)
+- **Testimonials** — Reseñas de clientes con carrusel Embla y botón de WhatsApp
 - **Galery** — Galería de fotos de productos e instalaciones con lightbox
 - **Contact** — Formulario de contacto conectado a Google Sheets + datos de sucursal
-- **FAQ** — Información sobre el negocio
-- **Footer** — Redes sociales y derechos reservados
+- **FAQ** — Preguntas frecuentes con acordeón
+- **WhatsAppButton** — Botón flotante de WhatsApp con animación pulse
+- **Footer** — Logo condicional, redes sociales y derechos reservados
 
 ## Tecnologías
 
@@ -24,7 +26,11 @@ Sitio web de **Cafebzito** — café artesanal y platillos mexicanos en Campeche
 ## Fuentes
 
 - **Montserrat** — Google Fonts (nombre de la marca)
-- **Minion Pro** — Self-hosted (eslogan)
+- **Minion Pro** — Self-hosted OTF (eslogan)
+
+## Tema
+
+Dark/light mode con `ThemeProvider`. Logo, blur decorativo y colores se adaptan según el tema.
 
 ## Scripts
 
@@ -33,4 +39,5 @@ npm run dev      # Desarrollo
 npm run build    # Producción
 npm run preview  # Vista previa del build
 npm run lint     # ESLint
+npm run deploy   # Deploy a GitHub Pages (gh-pages)
 ```

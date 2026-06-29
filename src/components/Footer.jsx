@@ -11,23 +11,25 @@ const socialLinks = [
   
 ]
 
+const img = (path) => import.meta.env.BASE_URL + path.replace(/^\//, "")
+
 export default function Footer() {
   const { theme } = useTheme()
   return (
-    <footer id="footer" className="container py-10 sm:py-16">
+    <footer id="footer" className="container py-16 sm:py-20 scroll-mt-16">
       <div className="p-10 bg-muted/50 dark:bg-card border rounded-2xl">
         <div className="flex flex-col items-center text-center">
-          <a href="/" className="flex items-center gap-3 mb-3">
-            <img src={theme === "dark" ? "/logo-cafebzito-dark.jpg" : "/logo-cafebzito-ligth.jpg"} alt="Cafebzito" className="size-12 rounded-full object-cover" />
+          <a href={import.meta.env.BASE_URL || "/"} className="flex items-center gap-3 mb-3">
+            <img src={theme === "dark" ? img("img/logo/logo-cafebzito-dark.jpg") : img("img/logo/logo-cafebzito-light.jpg")} alt="Cafebzito" className="size-12 rounded-full object-cover" />
             <div className="leading-tight text-left">
-              <div className="font-bold text-xl font-montserrat">CAFEBZTIO</div>
+              <div className="font-bold text-xl font-montserrat">CAFEBZITO</div>
               <div className="text-sm text-muted-foreground font-minion-pro">Aquí todo sabe mejor.</div>
             </div>
           </a>
           <div className="flex gap-4 mt-2">
             {socialLinks.map(({ name, href, icon: Icon, color }) => (
               <a key={name} href={href} target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform" aria-label={name}>
-                <Icon className={`size-6 ${color}`} />
+                <Icon className={`size-8 ${color}`} />
               </a>
             ))}
           </div>

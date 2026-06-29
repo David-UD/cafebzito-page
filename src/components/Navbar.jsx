@@ -19,13 +19,18 @@ import { Separator } from "@/components/ui/separator"
 import { Menu } from "lucide-react"
 import ToggleTheme from "./ToggleTheme"
 
+const base = import.meta.env.BASE_URL || "/"
+
 const routeList = [
   { href: "#", label: "Inicio" },
+  { href: "#history", label: "Historia" },
   { href: "#galery", label: "Galería" },
   { href: "#contact", label: "Contacto" },
   { href: "#faq", label: "¿Quienes somos?" },
   { href: "#footer", label: "Redes sociales" },
 ]
+
+const img = (path) => import.meta.env.BASE_URL + path.replace(/^\//, "")
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -40,8 +45,8 @@ export default function Navbar() {
       className="w-[90%] md:w-[70%] lg:w-[75%] lg:max-w-screen-xl top-5 mx-auto sticky border z-40 rounded-2xl flex justify-between items-center p-2 bg-card shadow-md"
       style={{ boxShadow }}
     >
-      <a href="/" className="flex items-center gap-2">
-        <img src={theme === "dark" ? "/logo-cafebzito-dark.jpg" : "/logo-cafebzito-ligth.jpg"} alt="Cafebzito" className="size-9 rounded-full object-cover" />
+      <a href={base} className="flex items-center gap-2">
+        <img src={theme === "dark" ? img("img/logo/logo-cafebzito-dark.jpg") : img("img/logo/logo-cafebzito-light.jpg")} alt="Cafebzito" className="size-9 rounded-full object-cover" />
         <div className="leading-tight">
           <div className="font-bold text-base font-montserrat">CAFEBZITO</div>
           <div className="text-[10px] text-muted-foreground font-normal font-minion-pro">Aquí todo sabe mejor.</div>
@@ -57,8 +62,8 @@ export default function Navbar() {
             <div>
               <SheetHeader className="mb-4 ml-4">
                 <SheetTitle className="flex items-center">
-                  <a href="/" className="flex items-center gap-2">
-                    <img src={theme === "dark" ? "/logo-cafebzito-dark.jpg" : "/logo-cafebzito-ligth.jpg"} alt="Cafebzito" className="size-9 rounded-full object-cover" />
+                  <a href={base} className="flex items-center gap-2">
+                    <img src={theme === "dark" ? img("img/logo/logo-cafebzito-dark.jpg") : img("img/logo/logo-cafebzito-light.jpg")} alt="Cafebzito" className="size-9 rounded-full object-cover" />
                     <div className="leading-tight">
                       <div className="font-bold text-base font-montserrat">CAFEBZITO</div>
                       <div className="text-[10px] text-muted-foreground font-normal font-minion-pro">Aquí todo sabe mejor.</div>

@@ -64,7 +64,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="container py-16 sm:py-20">
+    <section id="contact" className="container py-16 sm:py-20 scroll-mt-16">
       <div className="mb-4">
             <h2 className="text-lg text-primary mb-2 tracking-wider">Contacto</h2>
           </div>
@@ -82,7 +82,7 @@ export default function Contact() {
                 <Building2 />
                 <div className="font-bold">Dirección</div>
               </div>
-              <div className="text-sm">Calle 10 & Ciriaco Vázquez y 47, Barrio de Guadalupe, 24010 San Francisco de Campeche, Camp.</div>
+              <div className="text-sm">Calle 10 & Ciriaco Vázquez y calle 47, Barrio de Guadalupe, 24010 San Francisco de Campeche, Camp.</div>
             </div>
             <div>
               <div className="flex gap-2 mb-1">
@@ -91,7 +91,9 @@ export default function Contact() {
               </div>
               <div className="text-sm">
                 <div>Lunes - Domingo</div>
-                <div>8AM - 10:30PM</div>
+                <div>8:00 AM - 10:30 PM</div>
+                <div>Martes</div>
+                <div>8:00 AM - 3:30 PM</div>
               </div>
             </div>
             <div>

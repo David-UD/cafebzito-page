@@ -1,37 +1,118 @@
+import { useState, useEffect, useRef } from "react"
+import { Button } from "@/components/ui/button"
+import { ArrowLeft, ArrowRight } from "lucide-react"
+
+const img = (path) => import.meta.env.BASE_URL + path.replace(/^\//, "")
+const totalPortadas = 2
+
 export default function Hero() {
+  const [current, setCurrent] = useState(0)
+  const intervalRef = useRef(null)
+  const touchStartX = useRef(0)
+  const currentRef = useRef(0)
+
+  function goTo(index) {
+    setCurrent(index)
+    currentRef.current = index
+    restartInterval()
+  }
+
+  function next() {
+    goTo((currentRef.current + 1) % totalPortadas)
+  }
+
+  function prev() {
+    goTo((currentRef.current - 1 + totalPortadas) % totalPortadas)
+  }
+
+  function restartInterval() {
+    if (intervalRef.current) clearInterval(intervalRef.current)
+    intervalRef.current = setInterval(() => {
+      goTo((currentRef.current + 1) % totalPortadas)
+    }, 5000)
+  }
+
+  useEffect(() => {
+    restartInterval()
+    return () => clearInterval(intervalRef.current)
+  }, [])
+
   return (
-    <section className="container">
-      <div className="grid place-items-center lg:max-w-screen-xl gap-8 mx-auto py-12 md:py-20">
+    <section className="container py-16 sm:py-20 scroll-mt-20">
+      <div className="grid place-items-center lg:max-w-screen-xl gap-8 mx-auto">
         <div className="text-center space-y-8">
 
           <div className="max-w-screen-md mx-auto text-center text-5xl md:text-6xl font-bold">
+            <img
+              src={img("img/logo/logo-cafebzito-dark.jpg")}
+              alt="Logo Cafebzito"
+              className="mx-auto size-32 md:size-44 rounded-full object-cover shadow-lg border-2 border-primary/20"
+            />
             <h1>
               <span className="font-montserrat">CAFEBZITO</span>{" "}
               <div>
-              <span className="text-transparent bg-gradient-to-r from-[#D247BF] to-primary bg-clip-text font-minion-pro">
+              <span className="text-transparent bg-gradient-to-r from-[#FFBF31] to-primary bg-clip-text font-minion-pro">
                 Aquí todo sabe mejor
               </span>{" "}
               </div>
             </h1>
           </div>
 
-          <p className="max-w-screen-sm mx-auto text-xl text-muted-foreground">
-            En Cafebzito, te ofrecemos una exquisita variedad de comidas mexicanas. 
-            Una cocina creativa para paladares de todo tipo, donde encontraras platillos tipicos y dulces, acompañado siempre de un café.
+          <p className="max-w-screen-sm mx-auto text-xl text-foreground">
+            <b>CAFEBZITO</b> es más que un café-restaurante; es un espacio inspirado en los sueños, la creatividad y los momentos que dejan huella.
+            Un lugar donde el aroma del café, la buena gastronomía, la cultura y la convivencia se unen para crear experiencias memorables, invitando a cada visitante a escribir, crear y compartir su propia historia
           </p>
 
         </div>
 
-        <div className="relative group mt-14">
-          <div className="absolute -top-6 right-12 w-[90%] h-12 lg:h-[80%] bg-primary/50 blur-3xl rounded-full img-shadow-animation" />
+        <div className="relative w-full mt-14">
+          <div className="absolute -top-6 right-12 w-[90%] h-12 lg:h-[80%] bg-primary/50 blur-3xl rounded-full img-shadow-animation pointer-events-none" />
+          <div className="absolute -bottom-6 left-12 w-[90%] h-12 lg:h-[80%] bg-primary/50 blur-3xl rounded-full img-shadow-animation pointer-events-none" />
 
-          <img
-            className="w-full md:w-[1200px] mx-auto rounded-lg relative leading-none flex items-center border border-t-2 border-t-primary/30 img-border-animation"
-            src="/promociones.png"
-            alt="promociones"
-          />
+          <div
+            className="relative overflow-hidden rounded-lg border-t-2 border-t-primary/30 img-border-animation"
+            onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX }}
+            onTouchEnd={(e) => {
+              const diff = touchStartX.current - e.changedTouches[0].clientX
+              if (Math.abs(diff) > 50) {
+                if (diff > 0) next()
+                else prev()
+              }
+            }}
+          >
+            <div className="grid grid-cols-1 grid-rows-1">
+              {Array.from({ length: totalPortadas }, (_, i) => (
+                <div
+                  key={i}
+                  className={`col-start-1 row-start-1 transition-opacity duration-700 ease-in-out ${
+                    i === current ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  <img
+                    className="w-full h-auto"
+                    src={img(`img/portadas/portada-${i + 1}.png`)}
+                    alt={`portada ${i + 1} de cafebzito`}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
 
-          <div className="absolute bottom-0 left-0 w-full h-20 md:h-28 bg-gradient-to-b from-background/0 via-background/50 to-background rounded-lg" />
+        </div>
+
+        <div className="flex justify-center gap-3 mt-4">
+          {Array.from({ length: totalPortadas }, (_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => goTo(i)}
+              className={`w-3 h-3 rounded-full transition-colors ${
+                i === current ? "bg-primary" : "bg-primary/30"
+              }`}
+              aria-current={i === current}
+              aria-label={`Slide ${i + 1}`}
+            />
+          ))}
         </div>
       </div>
 
