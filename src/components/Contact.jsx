@@ -92,8 +92,8 @@ export default function Contact() {
               <div className="text-sm">
                 <div>Lunes - Domingo</div>
                 <div>8:00 AM - 10:30 PM</div>
-                <div>Martes</div>
-                <div>8:00 AM - 3:30 PM</div>
+                {/* <div>Martes</div>
+                <div>8:00 AM - 3:30 PM</div> */}
               </div>
             </div>
             <div>

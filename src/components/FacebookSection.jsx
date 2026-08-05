@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react"
 
+const img = (path) => import.meta.env.BASE_URL + path.replace(/^\//, "")
+
 let sdkPromise = null
 
 function loadFBSdk() {
@@ -49,14 +51,14 @@ export default function FacebookSection() {
           Síguenos en Facebook
         </h2>
       </div>
-      <div className="flex justify-center items-center px-4 sm:px-0">
-        <div className="w-full max-w-[500px] sm:max-w-[400px]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start px-4 sm:px-0">
+        <div className="flex justify-center">
           <div
             className="fb-page"
             data-href="https://www.facebook.com/CafebzitoCampeche"
             data-tabs="timeline"
-            data-width="450"
-            data-height="600"
+            data-width="300"
+            data-height="550"
             data-small-header="false"
             data-adapt-container-width="true"
             data-hide-cover="false"
@@ -66,6 +68,14 @@ export default function FacebookSection() {
               <a href="https://www.facebook.com/CafebzitoCampeche">CafebzitoCampeche</a>
             </blockquote>
           </div>
+        </div>
+        <div className="flex justify-center">
+          <img
+            src={img("img/fb/comentarios_facebook_cafebzito.jpg")}
+            alt="Comentarios de Facebook - CAFEBZITO"
+            className="w-full max-w-md rounded-lg shadow-lg object-cover"
+            loading="lazy"
+          />
         </div>
       </div>
     </section>

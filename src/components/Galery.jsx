@@ -41,7 +41,12 @@ export default function Galery() {
       </div>
 
       <div className="text-center mb-10">
-        <h2 className="text-3xl md:text-4xl font-bold">Una poco de nuestros productos</h2>
+        <h2 className="text-3xl md:text-4xl text-center font-bold mb-3">
+          Una poco de nuestros{" "}
+          <span className="text-transparent bg-gradient-to-r from-[#FFBF31] to-primary bg-clip-text">
+            productos
+          </span>
+        </h2>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
         {photos.map(({ src, alt }) => (

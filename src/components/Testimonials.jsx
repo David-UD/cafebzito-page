@@ -23,7 +23,13 @@ export default function Testimonials() {
     <section id="reseñas" className="container py-16 sm:py-20 scroll-mt-16">
       <div className="text-center mb-8">
         <h2 className="text-lg text-primary text-center mb-2 tracking-wider">Reseñas</h2>
-        <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">Reseñas y comentarios de nuestros clientes</h2>
+        <h2 className="text-3xl md:text-4xl text-center font-bold mb-3">
+          Reseñas y{" "}
+          <span className="text-transparent bg-gradient-to-r from-[#FFBF31] to-primary bg-clip-text">
+            comentarios
+          </span>{" "}
+          de nuestros clientes
+        </h2>
       </div>
       <Carousel
         opts={{ align: "start", loop: true }}
