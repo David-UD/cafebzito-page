@@ -58,9 +58,9 @@ export default function Hero() {
             </h1>
           </div>
 
-          <p className="max-w-screen-sm mx-auto text-xl text-foreground">
+          <p className="max-w-screen-sm mx-auto text-xl text-foreground text-justify">
             <b>CAFEBZITO</b> es más que un café-restaurante; es un espacio inspirado en los sueños, la creatividad y los momentos que dejan huella.
-            Un lugar donde el aroma del café, la buena gastronomía, la cultura y la convivencia se unen para crear experiencias memorables, invitando a cada visitante a escribir, crear y compartir su propia historia
+            Un lugar donde el aroma del café, la buena gastronomía, la cultura y la convivencia se unen para crear experiencias memorables, invitando a cada visitante a escribir, crear y compartir su propia historia.
           </p>
 
         </div>

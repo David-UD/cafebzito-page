@@ -1,8 +1,9 @@
 import { useTheme } from "@/components/theme-provider"
 import { Avatar, AvatarImage } from "@/components/ui/avatar"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel"
 import { Star } from "lucide-react"
+import Autoplay from "embla-carousel-autoplay"
 
 const reviewList = [
   { name: "Victoria Castañon", comment: "Es un local como con otros puestecitos de productos. La cafetería está al fondo. Es muy variado el menú en comparación de otras cafeterías aunque el café no es tan bueno. Los postres están muy bien y nos hicieron el favor de poner el waffle para compartir. Es petfriendly ", rating: 4.0 },
@@ -24,7 +25,11 @@ export default function Testimonials() {
         <h2 className="text-lg text-primary text-center mb-2 tracking-wider">Reseñas</h2>
         <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">Reseñas y comentarios de nuestros clientes</h2>
       </div>
-      <Carousel opts={{ align: "start", loop: true }} className="relative w-[80%] sm:w-[90%] lg:max-w-screen-xl mx-auto">
+      <Carousel
+        opts={{ align: "start", loop: true }}
+        plugins={[Autoplay({ delay: 3000, stopOnInteraction: true })]}
+        className="relative w-[80%] sm:w-[90%] lg:max-w-screen-xl mx-auto"
+      >
         <CarouselContent>
           {reviewList.map((review) => (
             <CarouselItem key={review.name} className="md:basis-1/2 lg:basis-1/3">
